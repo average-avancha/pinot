@@ -23,8 +23,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -327,7 +327,7 @@ public class ExplainPlanQueriesTest extends BaseQueriesTest {
     // Use 2 Threads for 2 data-tables
     // Different segments are assigned to each set of DataTables. This is necessary to simulate scenarios where
     // certain segments may completely be pruned on one server but not the other.
-    Map<ServerRoutingInstance, DataTable> dataTableMap = new HashMap<>();
+    Map<ServerRoutingInstance, DataTable> dataTableMap = new LinkedHashMap<>();
     try {
       // For multi-threaded BrokerReduceService, we cannot reuse the same data-table
       byte[] serializedResponse1 = instanceResponse1.toDataTable().toBytes();
